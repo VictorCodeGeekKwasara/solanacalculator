@@ -26,6 +26,10 @@ pub mod calculator {
         ctx.accounts.calculator.divide_abs(unit);        
         Ok(())
     }
+    pub fn reset(ctx:Context<Evaluate>) -> Result<()> {
+        ctx.accounts.calculator.reset_value();        
+        Ok(())
+    }
 }
 
 #[derive(Accounts)]
@@ -66,6 +70,9 @@ impl Calculator {
         self.value = self.value / unit ;
     }
 
+    pub fn reset_value (&mut self, ) {
+        self.value = 0 ;
+    }
 
 
 }

@@ -86,6 +86,20 @@ describe("calculator", () => {
     console.log('The value is', calculatorState.value.toString());
 
   })
+  it("resets", async ()=>{
+    await program.methods
+			.reset()
+			.accounts({
+				calculator: calculatorKeypair.publicKey,
+			})
+			.rpc();
+
+    let calculatorState = await program.account.calculator.fetch(
+      calculatorKeypair.publicKey
+    );
+    console.log('The value is', calculatorState.value.toString());
+
+  })
 
     
 });
